@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  db:
+    image:            # The Docker image to use for the MySQL service
+    restart: always   # The restart policy for the container (e.g., always, on-failure, etc.)
+    environment:      # Environment variables passed into the MySQL container 
+                      # (credentials can be initialized here; see the documentation for MySQL)
+    ports:            # Port mapping between the host and the container
+    expose:           # Ports to expose within the internal network but not on the host
+    volumes:          # Volumes to be mounted in the container, used for data persistence
+
+  app:
+    image:            # The Docker image to use for the Flask application service
+    restart:          # The restart policy for the container (e.g., always, on-failure, etc.)
+    ports:            # Port mapping between the host and the container
+
+volumes:
+  # Define named volumes here. These volumes can be used by services for persistent storage
