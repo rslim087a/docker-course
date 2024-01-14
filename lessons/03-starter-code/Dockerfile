@@ -1,19 +1,16 @@
 ## 1. Which base image do you want to use?
 
 
-## 2. Set the working directory inside the container.
+## 2. Set the working directory in the container.
 
 
-## 3. Copy a list of your dependencies to to your working directory.
+## 3. Copy everything from the current directory to the working directory.
 
 
 ## 4. Install the dependencies
 
 
-## 5. Copy the rest of your application's source code.
+## 5. Document and inform the developer that the application will use PORT 5000 of the container.
 
 
-## 6. Make PORT 5000 available to the world outside the running container
-
-
-## 7. Define the command to run when the container starts.
+## 6. Define the command to run when the container starts.
