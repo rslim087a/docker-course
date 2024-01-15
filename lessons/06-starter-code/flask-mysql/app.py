@@ -1,14 +1,15 @@
 from flask import Flask
 import mysql.connector
+import os
 
 app = Flask(__name__)
 
 # Configure MySQL connection
 db_config = {
-    'host': 'db',
-    'user': 'user',
-    'password': 'password',
-    'database': 'db'
+    'host': os.getenv('DATABASE', 'default_host'),
+    'user': os.getenv('USER', 'default_user'),
+    'password': os.getenv('PASSWORD', 'default_password'),
+    'database': os.getenv('DATABASE', 'default_db')
 }
 
 
