@@ -9,7 +9,8 @@ services:
 
   app:
     image:            # The Docker image to use for the Flask application service
-    depends_on:       # Does this container depend on the creation of another container?
+    depends_on:       
+      -  # Does this service depend on the creation of other services before it?
     environment:      # Environment variables passed into the flask application 
     ports:
       -  # Port mapping between the host and the container
