@@ -13,23 +13,50 @@ db_config = {
     'database': os.getenv('DATABASE', 'default_db')
 }
 
+def create_grades_table():
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS grades (
+            id VARCHAR(255) PRIMARY KEY,
+            name VARCHAR(255),
+            subject VARCHAR(255),
+            score VARCHAR(10)  # Changed from INT to VARCHAR
+        )
+    ''')
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+create_grades_table()  # Call this function when your app starts
+
+
 # Grade Class
 class Grade:
     def __init__(self, name=None, subject=None, score=None, id=None):
         self.name = name
         self.subject = subject
         self.score = score
-        self.id = id if id else str(uuid.uuid4())
+        self.id = id
 
     def save_to_db(self):
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
-        if self.id:
-            cursor.execute("UPDATE grades SET name=%s, subject=%s, score=%s WHERE id=%s", 
+
+        # Check if the grade already exists
+        cursor.execute("SELECT COUNT(*) FROM grades WHERE id = %s", (self.id,))
+        exists = cursor.fetchone()[0] > 0
+
+        if exists:
+            # Update existing record
+            cursor.execute("UPDATE grades SET name=%s, subject=%s, score=%s WHERE id=%s",
                            (self.name, self.subject, self.score, self.id))
         else:
-            cursor.execute("INSERT INTO grades (id, name, subject, score) VALUES (%s, %s, %s, %s)", 
+            # Insert new record
+            self.id = str(uuid.uuid4())  # Generate new id for new record
+            cursor.execute("INSERT INTO grades (id, name, subject, score) VALUES (%s, %s, %s, %s)",
                            (self.id, self.name, self.subject, self.score))
+
         conn.commit()
         cursor.close()
         conn.close()
@@ -64,7 +91,8 @@ def get_form():
 @app.route('/handleSubmit', methods=['POST'])
 def submit_form():
     form_data = request.form
-    grade = Grade(name=form_data['name'], subject=form_data['subject'], score=form_data['score'], id=form_data['id'])
+    grade_id = form_data.get('id')  # Use get method to handle the case when 'id' is not in form_data
+    grade = Grade(name=form_data['name'], subject=form_data['subject'], score=form_data['score'], id=grade_id)
     grade.save_to_db()
     return redirect(url_for('get_grades'))
 
@@ -74,4 +102,4 @@ def get_grades():
     return render_template('grades.html', grades=grades)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0', port=8080)
