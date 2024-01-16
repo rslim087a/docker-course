@@ -8,4 +8,4 @@ RUN pip install -r flask-mysql/requirements.txt
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["python", "flask-mysql/app.py"]
