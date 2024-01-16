@@ -4,8 +4,8 @@ WORKDIR /usr/service/flask-mysql-application
 
 COPY . .
 
-RUN pip install -r requirements.txt
+RUN pip install -r grade-submission/requirements.txt
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["python", "grade-submission/app.py"]
