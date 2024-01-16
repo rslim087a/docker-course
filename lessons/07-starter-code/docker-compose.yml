@@ -6,7 +6,8 @@ services:
       MYSQL_DATABASE: 'db'        
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
-    ports: '3306:3306'
+    ports: 
+      - '3306:3306'
     volumes: # Volumes to be mounted in the container, used for data persistence
 
   app:
@@ -15,7 +16,8 @@ services:
       DATABASE: 'db'
       USER: 'user'
       PASSWORD: 'password'
-    ports: '8080:8080'     
+    ports: 
+      - '8080:8080'     
 
 volumes:
    # Define named volumes here. These volumes can be used by services for persistent storage
