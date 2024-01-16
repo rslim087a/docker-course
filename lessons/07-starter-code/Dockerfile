@@ -6,6 +6,6 @@ COPY . .
 
 RUN pip install -r grade-submission/requirements.txt
 
-EXPOSE 5000
+EXPOSE 8080
 
 CMD ["python", "grade-submission/app.py"]
