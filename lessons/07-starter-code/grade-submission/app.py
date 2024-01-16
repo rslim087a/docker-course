@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 import os
 import uuid
+import time
 
 app = Flask(__name__)
 
@@ -13,23 +14,31 @@ db_config = {
     'database': os.getenv('DATABASE', 'default_db')
 }
 
-def create_grades_table():
-    conn = mysql.connector.connect(**db_config)
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS grades (
-            id VARCHAR(255) PRIMARY KEY,
-            name VARCHAR(255),
-            subject VARCHAR(255),
-            score VARCHAR(10)  # Changed from INT to VARCHAR
-        )
-    ''')
-    conn.commit()
-    cursor.close()
-    conn.close()
+def create_grades_table(retries=5, delay=5):
+    for _ in range(retries):
+        try:
+            conn = mysql.connector.connect(**db_config)
+            cursor = conn.cursor()
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS grades (
+                    id VARCHAR(255) PRIMARY KEY,
+                    name VARCHAR(255),
+                    subject VARCHAR(255),
+                    score VARCHAR(10)
+                )
+            ''')
+            conn.commit()
+            cursor.close()
+            conn.close()
+            print("Database initialized successfully")
+            break
+        except mysql.connector.Error as err:
+            print("Database connection failed. Retrying...")
+            time.sleep(delay)
+    else:
+        print("Failed to connect to the database after several attempts.")
 
-create_grades_table()  # Call this function when your app starts
-
+create_grades_table()
 
 # Grade Class
 class Grade:
