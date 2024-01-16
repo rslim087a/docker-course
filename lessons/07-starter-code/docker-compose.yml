@@ -12,6 +12,7 @@ services:
 
   app:
     image: # your image here
+    depends_on: db
     environment:
       DATABASE: 'db'
       USER: 'user'
