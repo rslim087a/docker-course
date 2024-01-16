@@ -4,7 +4,7 @@ WORKDIR /usr/service/flask-mysql-application
 
 COPY . .
 
-RUN pip install -r requirements.txt
+RUN pip install -r flask-mysql/requirements.txt
 
 EXPOSE 5000
 
