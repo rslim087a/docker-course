@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Global Superstore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='form-stylesheet.css') }}">
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="{{ url_for('form') }}">Form</a>
+        <a href="{{ url_for('inventory') }}">Inventory</a>
+    </div>
+    <div class="container">
+        <h2>Global Superstore</h2>
+        <form method="post" action="{{ url_for('form') }}">
+            <select class="select" name="category">
+                <option style="color:blue" value="">Choose Category</option>
+                {% for category in categories %}
+                <option value="{{ category }}" {% if category == item.category %} selected {% endif %}>{{ category }}</option>
+                {% endfor %}
+            </select>
+            <input type="text" placeholder="Name" name="name" value="{{ item.name }}">
+            <input class="half" type="text" placeholder="Price" name="price" value="{{ item.price }}">
+            <input class="half" type="text" placeholder="Discount" name="discount" value="{{ item.discount }}">
+            <h4>Order Date</h4>
+            <input type="date" style="color:black" name="date" value="{{ item.date.strftime('%Y-%m-%d') }}">
+            <input type="hidden" name="id" value="{{ item.id }}">
+            <input type="submit" value="Submit Item">
+        </form>
+    </div>
+</body>
+</html>

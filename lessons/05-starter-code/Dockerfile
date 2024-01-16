@@ -1,8 +1,8 @@
 FROM python:3.8-slim
 
-WORKDIR /usr/service/flask-mysql-application
+WORKDIR /usr/service/grade-submission-application
 
-COPY . .
+COPY grade-submission/ .
 
 RUN pip install -r grade-submission/requirements.txt
 

@@ -2,7 +2,7 @@ FROM python:3.8-slim
 
 WORKDIR /usr/service/flask-mysql-application
 
-COPY . .
+COPY flask-mysql/ .
 
 RUN pip install -r flask-mysql/requirements.txt
 

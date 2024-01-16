@@ -1,6 +1,6 @@
 FROM python:3.8-slim
 
-WORKDIR /usr/service/grade-submission-mysql-application
+WORKDIR /usr/service/grade-submission-application
 
 COPY grade-submission/ .
 

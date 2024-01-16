@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='inventory-stylesheet.css') }}">
+</head>
+<body>
+    <div class="topnav">
+        <a href="{{ url_for('form') }}">Form</a>
+        <a class="active" href="{{ url_for('inventory') }}">Inventory</a>
+    </div>
+    <div class="container">
+        <h2>Inventory</h2>
+        <table id="table">
+            <tr>
+                <th>Category</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.category }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.discount }}</td>
+                <td>{{ item.date.strftime('%Y-%m-%d') }}</td>
+                <td><a role="button" class="update" href="{{ url_for('form', id=item.id) }}">Update</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

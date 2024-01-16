@@ -4,7 +4,7 @@
 ## 2. Set the working directory in the container.
 
 
-## 3. Copy everything from the current directory to the working directory.
+## 3. Copy the project files into the working directory.
 
 
 ## 4. Install the dependencies

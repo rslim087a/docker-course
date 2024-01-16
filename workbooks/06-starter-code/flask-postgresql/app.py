@@ -6,10 +6,10 @@ app = Flask(__name__)
 
 # Configure PostgreSQL connection
 db_config = {
-    'host': 'db',
-    'user': 'postgres_user',    # Same as in docker-compose.yml
-    'password': 'password',     # Same as in docker-compose.yml
-    'dbname': 'db'
+    'host': 'DATABASE',
+    'user': 'USER',    # Same as in docker-compose.yml
+    'password': 'PASSWORD',     # Same as in docker-compose.yml
+    'dbname': 'DATABASE'
 }
 
 @app.route('/', methods=['GET'])
@@ -22,4 +22,4 @@ def index():
         return "Failed to connect this application to PostgreSQL."
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0', port=5000)
