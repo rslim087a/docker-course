@@ -4,9 +4,11 @@ services:
     image:            # The Docker image to use for the MySQL service
     environment:      # Environment variables passed into the MySQL container 
                       # (credentials can be initialized here; see the documentation for MySQL)
-    ports:            # Port mapping between the host and the container
+    ports:            
+      -  # Port mapping between the host and the container
 
   app:
     image:            # The Docker image to use for the Flask application service
     environment:      # Environment variables passed into the flask application 
-    ports:            # Port mapping between the host and the container
+    ports:
+      -  # Port mapping between the host and the container
