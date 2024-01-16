@@ -23,4 +23,4 @@ def index():
         return "You need to connect this application to MYSQL"
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0', port=3000)
