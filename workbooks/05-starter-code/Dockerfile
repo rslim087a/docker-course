@@ -2,7 +2,7 @@
 FROM maven:3.6.3-jdk-11-slim
 
 # Set the working directory in the container
-WORKDIR /usr/src/global-superstore
+WORKDIR /usr/src/
 
 # Copy the project files
 COPY global-superstore/ .
