@@ -5,7 +5,7 @@ FROM maven:3.6.3-openjdk-17-slim
 WORKDIR /usr/src/
 
 # Copy the project files
-COPY global-superstore/ .
+COPY . .
 
 ## 4. Document and inform the developer that the application will use the container port: 8080.
 EXPOSE 8080
