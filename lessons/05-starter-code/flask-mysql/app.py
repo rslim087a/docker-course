@@ -20,14 +20,14 @@ for key, value in db_config.items():
 @app.route('/', methods=['GET'])
 def index():
     # Prepare a message with the database connection details
-    connection_details = f"Database Host: {db_config['host']}, User: {db_config['user']}, Database: {db_config['database']}"
+    connection_details = f"Database Host: {db_config['host']}, User: {db_config['user']}, Password: {db_config['password']}, Database: {db_config['database']}"
 
     try:
         conn = mysql.connector.connect(**db_config)
         conn.close()
-        return f"Success! Connected to MySQL. {connection_details}"
+        return f"Success! Connected to an instance of MySQL. You are using the credentials: {connection_details}"
     except mysql.connector.Error as e:
-        return f"Failed to connect to MySQL. {connection_details} Error: {e}"
+        return f"Failed to connect to an instance of MySQL. You are using the credentials: {connection_details}"
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=3000)
