@@ -5,7 +5,7 @@ FROM python:3.8-slim
 WORKDIR /usr/src/
 
 # Copy the project files into the working directory
-COPY flask-postgresql/ .
+COPY . .
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r flask-postgresql/requirements.txt
