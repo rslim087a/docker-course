@@ -10,8 +10,8 @@ COPY . .
 # Install any needed packages specified in requirements.txt
 RUN pip install -r flask-postgresql/requirements.txt
 
-# Document that the application will be using port 5000.
-EXPOSE 5000
+# Document that the application will be using port 3000.
+EXPOSE 3000
 
 # Run app.py when the container launches
 CMD ["python", "flask-postgresql/app.py"]
