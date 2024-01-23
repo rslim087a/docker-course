@@ -6,10 +6,10 @@ app = Flask(__name__)
 
 # Configure MySQL connection
 db_config = {
-    'host': os.getenv('DATABASE', 'default_host'),
-    'user': os.getenv('USER', 'default_user'),
-    'password': os.getenv('PASSWORD', 'default_password'),
-    'database': os.getenv('DATABASE', 'default_db')
+    'host': os.getenv('DATABASE'),
+    'user': os.getenv('USER'),
+    'password': os.getenv('PASSWORD'),
+    'database': os.getenv('DATABASE')
 }
 
 
