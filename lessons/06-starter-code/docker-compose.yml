@@ -1,16 +1,25 @@
 version: '3.3'
 services:
   db:
-    image:            # The Docker image to use for the MySQL service
-    environment:      # Environment variables passed into the MySQL container 
-                      # (credentials can be initialized here; see the documentation for MySQL)
-    ports:            
-      -  # Port mapping between the host and the container
+    image: mysql/mysql-server:8.0
+    environment:
+      MYSQL_DATABASE: 'db'        
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+    ports: 
+      - '3306:3306'
+    volumes: # Volumes to be mounted in the container, used for data persistence
 
   app:
-    image:            # The Docker image to use for the Flask application service
-    depends_on:       
-      -  # Does this service depend on the creation of other services before it?
-    environment:      # Environment variables passed into the flask application 
-    ports:
-      -  # Port mapping between the host and the container
+    image: # your image here
+    depends_on:
+      - db
+    environment:
+      DATABASE: 'db'
+      USER: 'user'
+      PASSWORD: 'password'
+    ports: 
+      - '8080:8080'     
+
+volumes:
+   # Define named volumes here. These volumes can be used by services for persistent storage

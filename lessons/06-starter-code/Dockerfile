@@ -1,11 +1,11 @@
 FROM python:3.8-slim
 
-WORKDIR /usr/service/flask-mysql-application
+WORKDIR /usr/service/grade-submission-mysql-application
 
-COPY flask-mysql/ .
+COPY grade-submission/ .
 
-RUN pip install -r flask-mysql/requirements.txt
+RUN pip install -r grade-submission/requirements.txt
 
-EXPOSE 3000
+EXPOSE 8080
 
-CMD ["python", "flask-mysql/app.py"]
+CMD ["python", "grade-submission/app.py"]

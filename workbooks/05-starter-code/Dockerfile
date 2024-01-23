@@ -1,14 +1,17 @@
-# Use the official Maven runtime with JDK 17 as a base image
-FROM maven:3.6.3-openjdk-17-slim
+# Use an official Python runtime as a base image
+FROM python:3.8-slim
 
 # Set the working directory in the container
 WORKDIR /usr/src/
 
-# Copy the project files
-COPY global-superstore/ .
+# Copy the project files into the working directory
+COPY flask-postgresql/ .
 
-## 4. Document and inform the developer that the application will use the container port: 8080.
-EXPOSE 8080
+# Install any needed packages specified in requirements.txt
+RUN pip install -r flask-postgresql/requirements.txt
 
-## 5. Define the command to run when the container starts.
-CMD ["mvn", "clean", "spring-boot:run"]
+# Document that the application will be using port 5000.
+EXPOSE 5000
+
+# Run app.py when the container launches
+CMD ["python", "flask-postgresql/app.py"]

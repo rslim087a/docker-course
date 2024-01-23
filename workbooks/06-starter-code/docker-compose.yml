@@ -1,16 +1,26 @@
 version: '3.3'
 services:
   db:
-    image:            # The Docker image to use for the PostgreSQL service
-    environment:      # Environment variables passed into the PostgreSQL container 
-                      # (Database name, user, and password can be initialized here – See the docker docs for PostgreSQL)
-    ports:
-      -  # Port mapping between the host and the container
+    image: postgres:14
+    environment:
+      POSTGRES_DB: 'db'        
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: 'password'
+    ports: 
+      - '5432:5432'
+    volumes:
+      - # Volumes to be mounted in the container, used for data persistence
 
   app:
-    image:            # The Docker image to use for the Flask application service
-    depends_on:       
-      -               # Does this service depend on the creation of other services before it?
-    environment:      # Environment variables passed into the flask application 
-    ports:
-      -  # Port mapping between the host and the container
+    image:  # Replace with your Flask app image
+    depends_on:
+      - db
+    environment:
+      DATABASE: 'db'
+      DATABASE_USER: 'user'
+      DATABASE_PASSWORD: 'password'
+    ports: 
+      - '8080:8080'
+
+volumes:
+  # Define named volumes here. These volumes can be used by services for persistent storage

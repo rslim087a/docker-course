@@ -1,17 +1,11 @@
-# Use an official Python runtime as a base image
 FROM python:3.8-slim
 
-# Set the working directory in the container
-WORKDIR /usr/src/
+WORKDIR /usr/service/grade-submission-application
 
-# Copy the project files into the working directory
-COPY flask-postgresql/ .
+COPY grade-submission/ .
 
-# Install any needed packages specified in requirements.txt
-RUN pip install -r flask-postgresql/requirements.txt
+RUN pip install -r grade-submission/requirements.txt
 
-# Document that the application will be using port 5000.
-EXPOSE 5000
+EXPOSE 8080
 
-# Run app.py when the container launches
-CMD ["python", "flask-postgresql/app.py"]
+CMD ["python", "grade-submission/app.py"]
