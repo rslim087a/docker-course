@@ -1,5 +1,5 @@
 # Use the official Maven runtime with JDK 17 as a base image
-FROM maven:3.6.3-jdk-11-slim
+FROM maven:3.6.3-openjdk-17-slim
 
 # Set the working directory in the container
 WORKDIR /usr/src/
