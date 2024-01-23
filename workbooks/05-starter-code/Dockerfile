@@ -8,7 +8,7 @@ WORKDIR /usr/src/
 COPY . .
 
 # Install any needed packages specified in requirements.txt
-RUN pip install -r flask-postgresql/requirements.txt
+RUN pip install -r /usr/src/flask-postgresql/requirements.txt
 
 # Document that the application will be using port 5000.
 EXPOSE 5000
