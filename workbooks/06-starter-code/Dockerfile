@@ -2,7 +2,7 @@
 FROM python:3.8-slim
 
 # Set the working directory in the container
-WORKDIR /usr/src/flask-postgresql-application
+WORKDIR /usr/src/
 
 # Copy the project files into the working directory
 COPY flask-postgresql/ .
