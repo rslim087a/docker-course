@@ -4,21 +4,18 @@ import os
 
 app = Flask(__name__)
 
-# Function to check environment variables
-def get_env_variable(name):
-    value = os.getenv(name)
-    if value is None:
-        raise RuntimeError(f"The required environment variable {name} is not set.")
-    return value
-
 # Configure MySQL connection
 db_config = {
-    'host': get_env_variable('DATABASE_HOST'),
-    'user': get_env_variable('DATABASE_USER'),
-    'password': get_env_variable('DATABASE_PASSWORD'),
-    'database': get_env_variable('DATABASE_NAME')
+    'host': os.getenv('DATABASE_HOST'),
+    'user': os.getenv('DATABASE_USER'),
+    'password': os.getenv('DATABASE_PASSWORD'),
+    'database': os.getenv('DATABASE_NAME')
 }
 
+# Check for missing environment variables
+for key, value in db_config.items():
+    if value is None:
+        raise RuntimeError(f"Environment variable for '{key}' is not set.")
 
 @app.route('/', methods=['GET'])
 def index():
