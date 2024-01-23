@@ -1,6 +1,6 @@
 FROM python:3.8-slim
 
-WORKDIR /usr/service/flask-mysql-application
+WORKDIR /usr/src/
 
 COPY . .
 
