@@ -13,10 +13,10 @@ CATEGORIES = ["Furniture", "Office Supplies", "Technology"]
 
 # Database configuration
 db_config = {
-    'host': os.getenv('DATABASE', 'localhost'),
-    'dbname': os.getenv('DATABASE', 'your_db_name'),
-    'user': os.getenv('DATABASE_USER', 'your_db_user'),
-    'password': os.getenv('DATABASE_PASSWORD', 'your_db_password')
+    'host': os.getenv('DATABASE_HOST'),
+    'dbname': os.getenv('DATABASE_NAME'),
+    'user': os.getenv('DATABASE_USER'),
+    'password': os.getenv('DATABASE_PASSWORD')
 }
 
 def get_db_connection():
