@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  db:
+  mysql:
     image: mysql/mysql-server:8.0
     environment:
       MYSQL_DATABASE: 'db'        
@@ -10,7 +10,7 @@ services:
       - '3306:3306'
     volumes: # Volumes to be mounted in the container, used for data persistence
 
-  app:
+  flaskapp:
     image: # your image here
     depends_on:
       - db
