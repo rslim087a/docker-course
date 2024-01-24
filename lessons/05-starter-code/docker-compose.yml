@@ -1,13 +1,13 @@
 version: '3.3'
 services:
-  db:
+  mysql:
     image:            # The Docker image to use for the MySQL service
     environment:      # Environment variables passed into the MySQL container 
                       # (credentials can be initialized here; see the documentation for MySQL)
     ports:            
       -  # Port mapping between the host and the container
 
-  app:
+  flask-app:
     image:            # The Docker image to use for the Flask application service
     depends_on:       
       -  # Does this service depend on the creation of other services before it?
