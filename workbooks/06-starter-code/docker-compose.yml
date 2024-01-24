@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  db:
+  postgresql:
     image: postgres:14
     environment:
       POSTGRES_DB: 'db'        
@@ -11,7 +11,7 @@ services:
     volumes:
       - # Volumes to be mounted in the container, used for data persistence
 
-  app:
+  flask-app:
     image:  # Replace with your Flask app image
     depends_on:
       - db
