@@ -7,7 +7,7 @@ services:
     ports:
       -  # Port mapping between the host and the container
 
-  flask-app:
+  flaskapp:
     image:            # The Docker image to use for the Flask application service
     depends_on:       
       -               # Does this service depend on the creation of other services before it?
