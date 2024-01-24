@@ -6,10 +6,10 @@ app = Flask(__name__)
 
 # Configure PostgreSQL connection
 db_config = {
-    'host': os.getenv('POSTGRES_HOST'),
-    'user': os.getenv('POSTGRES_USER'),
-    'password': os.getenv('POSTGRES_PASSWORD'),
-    'dbname': os.getenv('POSTGRES_DB')
+    'host': os.getenv('DATABASE_HOST'),
+    'user': os.getenv('DATABASE_USER'),
+    'password': os.getenv('DATABASE_PASSWORD'),
+    'dbname': os.getenv('DATABASE_NAME')
 }
 
 # Check for missing environment variables
