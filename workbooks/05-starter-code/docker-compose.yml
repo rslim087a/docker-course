@@ -1,13 +1,13 @@
 version: '3.3'
 services:
-  db:
+  mysql:
     image:            # The Docker image to use for the PostgreSQL service
     environment:      # Environment variables passed into the PostgreSQL container 
                       # (Database name, user, and password can be initialized here – See the docker docs for PostgreSQL)
     ports:
       -  # Port mapping between the host and the container
 
-  app:
+  flask-app:
     image:            # The Docker image to use for the Flask application service
     depends_on:       
       -               # Does this service depend on the creation of other services before it?
