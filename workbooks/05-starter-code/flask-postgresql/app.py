@@ -25,9 +25,9 @@ def index():
     try:
         conn = psycopg2.connect(**db_config)
         conn.close()
-        return f"Success! Connected to an instance of PostgreSQL. You are using the credentials: {connection_details}"
+        return f"Success! Connected to an instance of PostgreSQL. You are using the env variables: {connection_details}"
     except psycopg2.Error as e:
-        return f"Failed to connect to an instance of PostgreSQL. You are using the credentials: {connection_details}"
+        return f"Failed to connect to an instance of PostgreSQL. You are using the env variables: {connection_details}"
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=3000)
