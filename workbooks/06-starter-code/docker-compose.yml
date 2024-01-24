@@ -11,7 +11,7 @@ services:
     volumes:
       - # Volumes to be mounted in the container, used for data persistence
 
-  flask-app:
+  flaskapp:
     image:  # Replace with your Flask app image
     depends_on:
       - db
