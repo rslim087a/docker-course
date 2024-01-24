@@ -16,7 +16,8 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE: 'db'
+      DATABASE_HOST: 'postgresql'
+      DATABASE_NAME: 'db'
       DATABASE_USER: 'user'
       DATABASE_PASSWORD: 'password'
     ports: 
