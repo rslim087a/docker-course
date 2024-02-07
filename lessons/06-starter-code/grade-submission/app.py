@@ -8,10 +8,10 @@ app = Flask(__name__)
 
 # Database configuration using environment variables
 db_config = {
-    'host': os.getenv('DATABASE', 'default_host'),
-    'user': os.getenv('USER', 'default_user'),
-    'password': os.getenv('PASSWORD', 'default_password'),
-    'database': os.getenv('DATABASE', 'default_db')
+    'host': os.getenv('DATABASE_HOST', 'default_host'),
+    'user': os.getenv('DATABASE_USER', 'default_user'),
+    'password': os.getenv('DATABASE_PASSWORD', 'default_password'),
+    'database': os.getenv('DATABASE_NAME', 'default_db')
 }
 
 def create_grades_table(retries=5, delay=5):
