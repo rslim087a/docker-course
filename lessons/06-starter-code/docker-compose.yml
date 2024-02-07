@@ -13,7 +13,7 @@ services:
   flaskapp:
     image: # your image here
     depends_on:
-      - db
+      - mysql
     environment:
       DATABASE: 'db'
       USER: 'user'
