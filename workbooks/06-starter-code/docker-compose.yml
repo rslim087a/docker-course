@@ -14,7 +14,7 @@ services:
   flaskapp:
     image:  # Replace with your Flask app image
     depends_on:
-      - db
+      - postgresql
     environment:
       DATABASE_HOST: 'postgresql'
       DATABASE_NAME: 'db'
